@@ -19,7 +19,7 @@
 
 ### 2° Passo
 
-   - Criar a rota Spot, onde será um espaço para adicionar/cadastrar lugares a serem alugados
+   * Criar a rota Spot, onde será um espaço para adicionar/cadastrar lugares a serem alugados
   Os campos serão: Imagem, company, price, techs
 
   * <p><span style="color:red"><em>*WARNING*</em></span></p>
@@ -31,4 +31,15 @@
       ``yarn add multer``
       Configurações do multer encontra-se em src/config/upload.js
 
-  - Criar rota para listagem de itens cadastrados. Onde terá um filtro para as tecnologias 
+  * Criar rota para listagem de itens cadastrados.
+  * Criar um filtro para as tecnologias.
+
+### Passo 3°
+
+  * Criar rota para o Dashboard da aplicação, onde irá mostrar spots cadastrados pra serem mostrados no dashboard
+
+
+### Passo 4
+
+  * Criar rota de reservas
+   
