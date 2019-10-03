@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const routes = require('./routes')
 
@@ -15,6 +16,7 @@ mongoose.connect('mongodb+srv://omnistack:omnistacksenha@omnistack-aircnc-cxfji.
 // req.body = acessar corpo da requisição (para criação, edição) Nao reconhece formato json, necessario colocar app.use(express.json()) pra ser reconhecido
 
 
+app.use(cors()) // qualquer tipo de aplicação possa acessar a api
 app.use(express.json())
 app.use(routes) //tem que ser depois, por a execução é sequencial
 
