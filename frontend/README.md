@@ -15,3 +15,11 @@ Para pegar essa informação, jogar no REST do backend e devolver o id, precisam
 * ``yarn add axios``
 * ``npm i axios``
 
+## 2 - Criação das rotas
+
+Criado o arquivo de rotas que fará a navegação da aplicação. 
+Foram criadas as paginas de Login, Dashboard e a New. Conceitos novos do React como <> </> que são fragment no react, que é basicamente uma div que nao aparece no html e history que permite o redirecionamento automatico pra outra rota.
+
+Pacotes adicionados:
+
+* ``yarn add react-router-dom``
