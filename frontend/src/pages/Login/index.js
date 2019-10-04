@@ -8,7 +8,7 @@ export default function Login({ history }) { // Faz navegação de uma forma aut
   async function handleSubmit(event) {
     event.preventDefault(); // previnir do efeito padrao de submit, a troca de tela
 
-    // console.log(email)
+    console.log(email)
 
     const response = await api.post('/sessions', { email })
 
