@@ -32,6 +32,31 @@ Nesse projeto, iniciaremos com uma novidade que se chama ``expo``, que é uma fe
 });
 ```  
   * Toda a estilização do react-native é feita com flexbox, e flexDirection: column
-  * Sempre será strings a nao ser que seja um numero.
+  * Sempre será strings a nao ser que seja um numero.  
 
+## Passo 1
+
+  Configurar roteamento/navegação entre paginas da aplicação. Para isso, feito a instalação do `'react-navigation'`.
+  * yarn add react-navigation
+  * npm install react-navigation
+
+Configuração de rotas no login, usando conceitos como:
+ View
+  KeyboardAvoidingView = Para o teclado subir e nao cobrir o componente (Android essa feature é automatica, ios nao)
+
+   TextInput = Input, area de entrada de text;
+
+   Platform = Verifica a plataforma em que aplicação está
   
+   StyleSheet = estilo
+  
+   Image = Imagem
+  
+   Text = Texto simples
+  
+   TouchableOpacity = Botão que ao tocar faz o efeito de 
+   opacidade;
+
+   OnPress =  ao pressionar
+
+   * Conexão com a API usamos axios, porém, o endereço da api vem do localhost, que irá funcionar apenas em emuladores no laptop, pra solucionar isso, copiaremos o endereço exposto no expo
