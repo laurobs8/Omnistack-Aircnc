@@ -1,26 +1,40 @@
-import React, { useState } from 'react';
-import { View, KeyboardAvoidingView, TextInput, Platform, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, KeyboardAvoidingView, AsyncStorage, TextInput, Platform, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 
 import logo from '../assets/logo.png'
 
-import api from './../services/api'
+import api from '../services/api'
 
-export default function Login() {
+export default function Login({ navigation }) {
 
   const [email, setEmail] = useState('')
   const [techs, setTechs] = useState('')
 
+  useEffect(() => {
+    AsyncStorage.getItem('user').then(user => { // Rotas no mobile são invisiveis, por isso ao recarregar a pagina ele volta pra pagina login. Pra salvar no estado atual usa-se
+      if(user){                                 // procura user, se existir coloca-se na variavel e navega pra proxima tela
+        navigation.navigate('List')             // Se usuario ja tiver feito login, ele é direcionado pra tela List
+      }
+    });
+  }, [])
+
   async function handleSubmit() {
-    // email
-    // tecnologias
-console.log(email)
-console.log(techs)
+    const response = await api.post("/sessions", { email })
+
+    const { _id } = response.data
+    console.log(_id)
+
+    await AsyncStorage.setItem('user', _id)
+    await AsyncStorage.setItem('techs', techs)
+
+    navigation.navigate('List')
+
   }
 
   return (
     <KeyboardAvoidingView behavior="padding" enabled={Platform.OS === 'ios'} style={styles.container}>
       <View style={styles.form}>
-        <Image source={logo}></Image>
+        <Image source={logo} style={styles.logo}></Image>
 
         <Text style={styles.label}>SEU EMAIL * </Text>
 
@@ -61,6 +75,11 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "center",
     alignContent: "center",
+  },
+  logo: {
+    alignContent: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 100
   },
   label: {
     fontWeight: 'bold',

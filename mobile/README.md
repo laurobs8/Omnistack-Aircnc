@@ -60,3 +60,12 @@ Configuração de rotas no login, usando conceitos como:
    OnPress =  ao pressionar
 
    * Conexão com a API usamos axios, porém, o endereço da api vem do localhost, que irá funcionar apenas em emuladores no laptop, pra solucionar isso, copiaremos o endereço exposto no expo
+
+   AsyncStorage = Armazenar alguma informação no dispositivo
+
+   navigation = No react native nao se usa o history como na aplicação web, para navegar o usuario pra outra tela usa-se navigation.navigate('nome da tela')
+
+   useEffect = executar uma ação assim que o usuario chega na tela, no nosso caso, executar a ação de navegação se o usuario ja estiver feito o login
+
+
+
