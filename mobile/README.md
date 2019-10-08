@@ -67,5 +67,29 @@ Configuração de rotas no login, usando conceitos como:
 
    useEffect = executar uma ação assim que o usuario chega na tela, no nosso caso, executar a ação de navegação se o usuario ja estiver feito o login
 
+## Passo 2
 
+Construção e configuração da pagina que irá listar os spots. Ao sair da pagina de login o usuario será redirecionado automaticamente para a pagina de Listagem.
 
+Nessa etapa, temos conceitos novos como de componente externo e também bastante coisa oriunda do react web.
+
+Componente externo: 
+  * Nesse caso, usado pra quando houver repetições na tela. Exemplo: 3 spots, um ao lado do outro para tecnologias React, e outros 3 spots pra tecnologia Node, um encima do outro. É a mesma organização porém com dados diferentes
+
+  Criação de propriedade:
+  Propriedade são elementos passados junto com os componentes, exemplo style, behavio, source etc. E podemos criar qualquer propriedade no React. Após criar o componente e fazer referencia na pagina list, colocamos uma propriedade chamada techs. Definimos essa propriedade no componente externo, passando como parametro na função principal. Colocamos: 
+
+  ```
+ export default function SpotList(props) {
+  return <Text>{props.tech}</Text>
+}
+ 
+  OU... 
+
+  export default function SpotList({ tech }) {
+  return <Text>{tech}</Text>
+}
+  ```
+
+* Buscar dados filtrados do backend
+* Estilizar os campos dos dados
