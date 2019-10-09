@@ -35,3 +35,9 @@ Ajustes feitos no backend:
 ## 4 - Envio dos dados para o backend
 
 Envio dos dados de um formulario de cadastro para o backend, foi utilizado conceitos de react de useMemo, que observa uma mudança de uma outra variavel e toda vez que alterar, ele gera um valor pra outra variavel, envio diferenciou do ja feito no login inicial, pois ja nao era com json e sim com o multipart Form e contem arquivo de imagem, nesse caso foi aplicado este conceito.
+
+--------------------------------------------------------------------------------
+
+## socket.io-client
+
+Comunicação em tempo real. Aqui, no front-end iremos fazer a conexão com o backend pra ser reconhecido como forma de conexão o web socket

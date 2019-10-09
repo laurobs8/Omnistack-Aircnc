@@ -8,7 +8,13 @@ import { Link } from 'react-router-dom'
 import api from '../../services/api';
 import './styles.css';
 
+import socketio from 'socket.io-client'
+
 export default function Dashboard() {
+
+  useEffect(() => {
+    const socket = socketio('http://localhost:3333')
+  }, [])
 
   const [spots, setSpots] = useState([]) // vem do backend como array
 
