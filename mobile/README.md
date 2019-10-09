@@ -93,3 +93,32 @@ Componente externo:
 
 * Buscar dados filtrados do backend
 * Estilizar os campos dos dados
+* Barra de rolagem (scroll), usando um componente destinado pra listas do React chamado FlatList.
+
+### Propriedades do Flatlist que usamos:
+* style = para estilizar;
+* data = Array de onde vem as informações;
+* keyExtractor = extrair um dado unico pra cada elemento, que é o id. Percorremos os dados e extrai-se o id de todos;
+* horizontal = indica que será um scroll horizontal;  
+* showsHorizontalScrollIndicator={false/true} = mostrar ou nao barra de rolagem;
+* renderItem = como esses dados serão mostrados na tela. 
+
+Dentro do renderItem temos uma observação: Na propriedade source será um pouco diferente, pois  no source quando está no formato ``source={item.thumbnail_url}`` irá procurar um arquivo fisico que nao está no projeto, então como é uma url(arquivo externo) vamos passar um objeto ``source={{ uri: item.thumbnail_url }}`` 
+
+### Navegação
+
+Navegação também se diferencia. No nosso caso, o SpotList nao é uma pagina como os outros então ele nao tem acesso a propriedade navigation por padrão. Por isso, o react-navigation tem uma propriedae chamada withNavigation que é pra adicionar essa propriedade em qualquer componente que nao seja uma pagina.
+
+Como faremos?
+
+Tirar o ``export default`` do começo e colocar no final ``export default withNavigation(SpotList)``. Isso pra ter acesso a propriedade navigation que irá na linha 6, na funcao principal ``function SpotList({ tech, navigation }) {..}``
+
+## Passo 3
+
+Construção da pagina de agendamentos, lá teremos um campo para colocar a data de reserva, botao de cancelar e de confirmar a reserva.
+
+Ao confirmar a reserva, irá mandar a solicitação para a api (backend) com os dados da reserva.
+
+Para acessar, abrimos o mongo atlas, clicar na opção connect e connect with compass
+
+no mongo compass baixado na maquina, entrar com as credenciais, clicar no nome do projeto, booking e estará la as requisições de reservas.

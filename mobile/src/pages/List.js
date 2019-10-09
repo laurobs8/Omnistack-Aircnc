@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, Image, Text, StyleSheet, AsyncStorage } from 'react-native';
+import { SafeAreaView, ScrollView, Image, Text, StyleSheet, AsyncStorage } from 'react-native';
 
 import logo from '../assets/logo.png'
 import SpotList from '../components/SpotList'
@@ -20,8 +20,10 @@ export default function List() {
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.logo} source={logo}></Image>
+      <ScrollView>
+        {techs.map(tech => <SpotList key={tech} tech={tech} />)}
+      </ScrollView>
 
-      {techs.map(tech => <SpotList key={tech} tech={tech} />)}
     </SafeAreaView>
   )
 }
