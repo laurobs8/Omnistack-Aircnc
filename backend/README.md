@@ -43,3 +43,19 @@
 
   * Criar rota de reservas
    
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+# Comunicação em tempo real com SOCKET.io
+
+É uma ferramenta que vai abstrair algumas funcionalidade do protocolo web sockets que é implementado pelo node, para fazer a com que a comunicação em tempo real seja mais facil, amigavel.
+
+#### baixar dependencia:
+* ``yarn add socket.io``
+
+* ``npm install socket.io``
+
+### Passo 1:
+
+Permitir que o servidor ouça tanto o protocolo HTTP quanto o Web Socket.
