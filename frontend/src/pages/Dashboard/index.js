@@ -1,31 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 // carregar a lista de spots que o usuario ja criou, como carregar a informação assim que o componente é 
 //exibido em tela? R: Precisamos executar uma função assim que o usuario acessa essa pagina. React usa o useEffect(importado logo acima)
 // useEffect é uma função que é passado dois parametros, primeira é uma funcao e a segunda é um array de dependencias, que são
 // caso mude as variaveis na dependencia, executa a função do primeiro parametro novamente. No nosso caso, como pretenndemos
 // carregar essa função apenas uma vez, passaremos o array vazio
+
 import { Link } from 'react-router-dom'
 import api from '../../services/api';
 import './styles.css';
 
 import socketio from 'socket.io-client'
+import { request } from 'http';
 
 export default function Dashboard() {
+  const [spots, setSpots] = useState([]) // vem do backend como array
+  const [requests, setRequests] = useState([])
+
+  const user_id = localStorage.getItem('user')
+  // useMemo = memorizar o valor de uma variavel até que alguma coisa mude
+  const socket = useMemo(() => socketio('http://localhost:3333', {
+    query: { user_id }
+  }), [user_id]) // só fazer o reload da conexão se o user_id mudar (usuario mude)
 
   useEffect(() => {
-    const user_id = localStorage.getItem('user')
-    const socket = socketio('http://localhost:3333', {
-      query: { user_id }
-    })
-  
     socket.on('booking_request', data => {
-      console.log(data)
+      setRequests([...requests, data])
     })
-  }, [])
-
-
-
-  const [spots, setSpots] = useState([]) // vem do backend como array
+  }, [requests, socket])
 
   useEffect(() => {
     async function loadSpots() {
@@ -42,6 +43,18 @@ export default function Dashboard() {
 
   return (
     <>
+      <ul className="notifications">
+        {requests.map(request => (
+          <li key={request.id}>
+            <p>
+              <strong>{request.user.email}</strong> está solicitando uma reserva em <strong>{request.spot.company}</strong> 
+              para a data: <strong>{request.date}</strong>
+            </p>
+            <button className="accept">ACEITAR</button>
+            <button className="reject">REJEITAR</button>
+          </li>
+        ))}
+      </ul>
       <ul className='spot-list'>
         {spots.map(spot => (
           <li key={spot._id}>
