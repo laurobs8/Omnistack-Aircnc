@@ -13,8 +13,17 @@ import socketio from 'socket.io-client'
 export default function Dashboard() {
 
   useEffect(() => {
-    const socket = socketio('http://localhost:3333')
+    const user_id = localStorage.getItem('user')
+    const socket = socketio('http://localhost:3333', {
+      query: { user_id }
+    })
+  
+    socket.on('booking_request', data => {
+      console.log(data)
+    })
   }, [])
+
+
 
   const [spots, setSpots] = useState([]) // vem do backend como array
 
