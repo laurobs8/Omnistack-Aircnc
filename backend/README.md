@@ -59,3 +59,13 @@
 ### Passo 1:
 
 Permitir que o servidor ouça tanto o protocolo HTTP quanto o Web Socket.
+
+Configuração para conexão do backend e frontend 
+
+### Passo 2 
+
+Configuração para mostrar em tempo real o spot reservado na tela do frontend com botões de aceitar e rejeitar a reserva
+
+### Passo 3
+
+Configuração de rotas para aceitar ou recusar a reserva e aplicar funcionalidades ao botoes de aceitar e recusar reserva
