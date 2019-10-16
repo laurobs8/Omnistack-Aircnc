@@ -13,7 +13,7 @@ export default function Login({ navigation }) {
   useEffect(() => {
     AsyncStorage.getItem('user').then(user => { // Rotas no mobile são invisiveis, por isso ao recarregar a pagina ele volta pra pagina login. Pra salvar no estado atual usa-se
       if(user){                                 // procura user, se existir coloca-se na variavel e navega pra proxima tela
-        navigation.navigate('List')             // Se usuario ja tiver feito login, ele é direcionado pra tela List
+        navigation.navigate('Login') // List            // Se usuario ja tiver feito login, ele é direcionado pra tela List
       }
     });
   }, [])
